@@ -1,0 +1,87 @@
+
+
+p{
+    font-family: Roboto, Arial;
+    margin: 0;
+    margin-bottom: 3px;
+    font-weight: 400;
+    text-align: left;
+    font-size: 18px;
+}
+.content{
+    display: flex;
+    justify-content: center;
+}
+
+.Login{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.search-bar{
+    margin-bottom: 20px;
+    width: 300px;
+    border: solid;
+    border-width: 1px;
+    height: 25px;
+    font-family: Roboto, Arial;
+    font-size: 15px;
+}
+
+.file{
+    display: flex;
+}
+
+.chooseFile{
+    font-family: Roboto, Arial;
+    border-radius: 3px;
+    border: solid;
+    border-width: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 1px ;
+    padding-bottom: 1px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+.p-file{
+    font-size: 15px;
+    display:inline-block;
+    margin-left: 10px;
+
+}
+
+.signup{
+    font-family: Roboto, Arial;
+    border-radius: 3px;
+    border: solid;
+    border-width: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px ;
+    padding-bottom: 5px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.box{
+    display: inline-block;
+    text-align: center;
+    border-radius: 15px;
+    padding-left: 100px;
+    padding-right: 100px ;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    border-width: 10px;
+    border: solid;
+
+}
+
+.brgyp{
+    margin-bottom: 10px;
+}
+
