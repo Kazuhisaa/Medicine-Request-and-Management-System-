@@ -13,6 +13,8 @@
 
 </head>
 
+
+
 <body>
   <div class="content">
     <div class="box">
@@ -41,7 +43,10 @@
         <input class="signup" type="submit" value="Sign Up">
       </form>
     </div>
+
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="public/js/username.js"></script>
 
 
 
