@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $fullname = trim($_POST['fullname']);
   $username = trim($_POST['username']);
   $password = $_POST['password'];
+
   $confirm_password = $_POST['confirm_password'];
 
   if ($password !== $confirm_password) {
