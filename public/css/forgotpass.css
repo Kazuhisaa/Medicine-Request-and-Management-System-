@@ -1,0 +1,84 @@
+    * {
+        text-decoration: none;
+    }
+    body{
+
+      font-family: Arial, sans-serif;
+      background-color: #fbf5df; 
+      margin: 0;
+      height: 100vh; 
+      display: flex;
+      justify-content: center; 
+      align-items: center;   
+    }
+    
+    .Forgot, .New{
+        width: 250px;
+        height: 200px;
+        background: rgb(215, 212, 208);
+        margin: auto;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+        color: rgba(18, 17, 17, 0.783);
+    }
+    .fpass{
+        font-size: 24px;
+        padding-top: 20px;
+        margin: auto;
+        display: inline-block;
+    }
+    p{
+        display: flex;
+        justify-content: center;
+        padding-top: 1px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    .labil{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        margin: auto;
+        padding-top: 10px;
+        padding-bottom: 30px;
+        justify-content: center;
+        display: flex;
+    } 
+    .Continue{
+        background-color: rgb(228, 95, 28);
+        margin: auto;
+        font-family: monospace;
+        box-shadow: 5px 4px 10px rgba(218, 76, 16, 0.6);
+        border: none;
+        font-size: 20px;
+        justify-content: center;
+        display: flex;
+        padding-left: 50px;
+        padding-right: 50px;
+        color: white;
+        font-size: small;
+    }   
+
+    .npass{
+        font-size: 29px;
+        margin: auto;
+        display: inline-block;
+    }
+    .Create{
+        padding-bottom: 12px;
+    }
+    .Confirm{
+        padding-bottom: 23px;
+    }
+    .Change{
+        background-color: rgb(228, 95, 28);
+        margin: auto;
+        font-family: monospace;
+        box-shadow: 5px 4px 10px rgba(218, 76, 16, 0.6);
+        border: none;
+        font-size: 20px;
+        justify-content: center;
+        display: flex;
+        padding-left: 50px;
+        padding-right: 50px;
+        color: white;
+        font-size: small;
+    }   
