@@ -20,8 +20,10 @@
     <div class="box">
       <p class="Login">Sign Up</p>
       <form action="">
-        <p>Name</p>
-        <input id="name" name="name" class="search-bar" type="text" placeholder="Enter Name" required>
+        <p>First Name</p>
+        <input id="Fname" name="Fname" class="search-bar" type="text" placeholder="First Name" required>
+        <p>Last Name</p>
+        <input id="Lname" name="Lname" class="search-bar" type="text" placeholder="Lirst Name" required>
         <p>Usename</p>
         <input id="Username" name="User" class="search-bar" type="text" placeholder="Enter Username" required>
         <p>Email</p>
