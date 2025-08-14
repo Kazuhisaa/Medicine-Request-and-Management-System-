@@ -19,13 +19,15 @@
   <div class="content">
     <div class="box">
       <p class="Login">Sign Up</p>
-      <form action="">
+      <form action="/validation/signup_process.php" method="POST" enctype="multipart/form-data">
         <p>First Name</p>
         <input id="Fname" name="Fname" class="search-bar" type="text" placeholder="First Name" required>
         <p>Last Name</p>
-        <input id="Lname" name="Lname" class="search-bar" type="text" placeholder="Lirst Name" required>
-        <p>Usename</p>
-        <input id="Username" name="User" class="search-bar" type="text" placeholder="Enter Username" required>
+        <input id="Lname" name="Lname" class="search-bar" type="text" placeholder="Last Name" required>
+        <p>Suffix</p>
+        <input id="Lname" name="Lname" class="search-bar" type="text" placeholder="(Jr,)">
+        <p>username</p>
+        <input id="username" name="User" class="search-bar" type="text" placeholder="Enter Username" required>
         <p>Email</p>
         <input id="email" name="email" class="search-bar" type="email" placeholder="Enter Email" required> <br>
         <p>Address</p>
@@ -53,4 +55,5 @@
 
 
 </body>
+
 </html>
