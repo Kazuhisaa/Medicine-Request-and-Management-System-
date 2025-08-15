@@ -30,6 +30,17 @@ p{
     font-size: 15px;
 }
 
+
+.username-bar{
+    margin-bottom: 10px;
+    width: 300px;
+    border: solid;
+    border-width: 1px;
+    height: 25px;
+    font-family: Roboto, Arial;
+    font-size: 15px;
+}
+
 .file{
     display: flex;
 }

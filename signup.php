@@ -12,28 +12,50 @@
   <link rel="stylesheet" href="public/css/signup.css">
 
 </head>
+<style>
+  .status-message {
+    font-size: 20x;
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-align: left;
 
+  }
+
+  .status-message.taken {
+    color: #d8000c;
+  }
+
+  .status-message.available {
+    color: #4f8a10;
+  }
+</style>
 
 
 <body>
+
   <div class="content">
     <div class="box">
       <p class="Login">Sign Up</p>
-      <form action="/validation/signup_process.php" method="POST" enctype="multipart/form-data">
+      <form action="process/signup_process.php" method="POST" enctype="multipart/form-data">
         <p>First Name</p>
         <input id="Fname" name="Fname" class="search-bar" type="text" placeholder="First Name" required>
         <p>Last Name</p>
         <input id="Lname" name="Lname" class="search-bar" type="text" placeholder="Last Name" required>
+        <p>Middle Name</p>
+        <input id="Mname" name="Mname" class="search-bar" type="text" placeholder="Middle Name" required>
         <p>Suffix</p>
-        <input id="Lname" name="Lname" class="search-bar" type="text" placeholder="(Jr,)">
-        <p>username</p>
-        <input id="username" name="User" class="search-bar" type="text" placeholder="Enter Username" required>
+        <input id="suffix" name="suffix" class="search-bar" type="text" placeholder="(Jr,)">
+
+        <p>Username</p>
+        <input id="username" name="username" class="username-bar" type="text" placeholder="Enter Username" required>
+        <div id="username_status" class="status-message"></div>
+
         <p>Email</p>
         <input id="email" name="email" class="search-bar" type="email" placeholder="Enter Email" required> <br>
         <p>Address</p>
         <input id="address" name="address" class="search-bar" type="text" placeholder="Enter Address" required> <br>
         <p>Contact</p>
-        <input id="phone" name="phone" class="search-bar" type="tel" placeholder="Enter Contact Number" required> <br>
+        <input id="contact" name="contact" class="search-bar" type="tel" placeholder="Enter Contact Number" required> <br>
         <p>Password</p>
         <input id="password" name="password" class="search-bar" type="password" placeholder="Enter Password" required> <br>
         <p>Confirm Password</p>
@@ -50,7 +72,7 @@
 
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="public/js/username.js"></script>
+  <script src="./public/js/username.js"></script>
 
 
 

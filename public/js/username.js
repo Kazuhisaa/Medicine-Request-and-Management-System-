@@ -1,16 +1,21 @@
 $(document).ready(function(){
-    $("#Username").on("keyup", function(){
-        let username = $(this).val().trim();
-        if(username.length > 0){
-            $.post("includes/usernamecheck.php", {username: username}, function(data){
-                if(data === "taken"){
-                    $("#Username").css("border", "2px solid red");
-                } else {
-                    $("#Username").css("border", "2px solid green");
-                }
-            });
-        } else {
-            $("#Username").css("border", "");
-        }
-    });
+        $("#username").on("keyup",function(){
+            var username =$(this).val();
+
+            if(username.length > 0){
+                $.ajax({
+                    url: "validation/username.php",
+                    method: "POST",
+                    data: {username: username},
+                    success: function(data){
+                        $("#username_status").html(data);
+                    }
+                
+                });
+
+            }else{
+                $("#username_status").html("");
+            }
+
+        });
 });
