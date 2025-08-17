@@ -20,7 +20,7 @@ $("#username").on("keyup", function() {
                 }
             }
         });
-    } else {
+    } else {        
         $("#username_status").html("");
         usernameAvailable = false;
         $(".signup").prop("disabled", true);

@@ -1,7 +1,14 @@
-let emailAvailable = false;
-
 $("#email").on("keyup", function() {
     var email = $(this).val();
+
+    
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        $("#email_status").html("<span class='status-message taken'>❌ Invalid email format</span>");
+        emailAvailable = false;
+        $(".signup").prop("disabled", true);
+        return; 
+    }
 
     if (email.length > 0) {
         $.ajax({
@@ -24,12 +31,5 @@ $("#email").on("keyup", function() {
         $("#email_status").html("");
         emailAvailable = false;
         $(".signup").prop("disabled", true);
-    }
-});
-
-$("#signupForm").on("submit", function(e) {
-    if (!emailAvailable) {
-        e.preventDefault();
-        $("#email").focus();
     }
 });

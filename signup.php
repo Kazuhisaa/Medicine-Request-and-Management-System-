@@ -60,12 +60,12 @@
         <input id="contact" name="contact" class="search-bar" type="tel" placeholder="Enter Contact Number" required> <br>
 
         <p>Password</p>
-        <input id="password" name="password" class="search-bar" type="password" placeholder="Enter Password" required> <br>
+        <input id="password" name="password" class="email-bar" type="password" placeholder="Enter Password" required> <br>
         <div id="password_status" class="status-message"></div>
 
         <p>Confirm Password</p>
-        <input id="confirm-password" name="confirm_password" class="search-bar" type="password" placeholder="Confirm Password" required> <br>
-        <div id="confirmpassword_status" class="status-message"></div>
+        <input id="confirm_password" name="confirm_password" class="email-bar" type="password" placeholder="Confirm Password" required> <br>
+        <div id="confirm_status" class="status-message"></div>
 
         <p class="brgyp">Barangay ID</p>
         <div class="file">
@@ -81,6 +81,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./public/js/username.js"></script>
   <script src="./public/js/email.js"></script>
+  <script src="./public//js/password.js"></script>
 
 
 
