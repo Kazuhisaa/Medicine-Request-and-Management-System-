@@ -14,7 +14,7 @@
 </head>
 <style>
   .status-message {
-    font-size: 20x;
+    font-size: 13px;
     margin: 0 0 10px 0;
     padding: 0;
     text-align: left;
@@ -36,7 +36,7 @@
   <div class="content">
     <div class="box">
       <p class="Login">Sign Up</p>
-      <form action="process/signup_process.php" method="POST" enctype="multipart/form-data">
+      <form id="sigupForm" action="process/signup_process.php" method="POST" enctype="multipart/form-data">
         <p>First Name</p>
         <input id="Fname" name="Fname" class="search-bar" type="text" placeholder="First Name" required>
         <p>Last Name</p>
@@ -51,15 +51,22 @@
         <div id="username_status" class="status-message"></div>
 
         <p>Email</p>
-        <input id="email" name="email" class="search-bar" type="email" placeholder="Enter Email" required> <br>
+        <input id="email" name="email" class="email-bar" type="email" placeholder="Enter Email" required> <br>
+        <div id="email_status" class="status-message"></div>
+
         <p>Address</p>
         <input id="address" name="address" class="search-bar" type="text" placeholder="Enter Address" required> <br>
         <p>Contact</p>
         <input id="contact" name="contact" class="search-bar" type="tel" placeholder="Enter Contact Number" required> <br>
+
         <p>Password</p>
         <input id="password" name="password" class="search-bar" type="password" placeholder="Enter Password" required> <br>
+        <div id="password_status" class="status-message"></div>
+
         <p>Confirm Password</p>
         <input id="confirm-password" name="confirm_password" class="search-bar" type="password" placeholder="Confirm Password" required> <br>
+        <div id="confirmpassword_status" class="status-message"></div>
+
         <p class="brgyp">Barangay ID</p>
         <div class="file">
           <input id="barangay-id" name="barangay_id" type="file" accept=".jpg,.png,.pdf">
@@ -73,6 +80,8 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./public/js/username.js"></script>
+  <script src="./public/js/email.js"></script>
+
 
 
 
