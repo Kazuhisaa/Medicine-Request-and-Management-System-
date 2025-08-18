@@ -1,91 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="public/css/signup.css">
+   <link rel="stylesheet" href="signup.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-<style>
-  .status-message {
-    font-size: 13px;
-    margin: 0 0 10px 0;
-    padding: 0;
-    text-align: left;
-
-  }
-
-  .status-message.taken {
-    color: #d8000c;
-  }
-
-  .status-message.available {
-    color: #4f8a10;
-  }
-</style>
-
-
 <body>
 
-  <div class="content">
-    <div class="box">
-      <p class="Login">Sign Up</p>
-      <form id="sigupForm" action="process/signup_process.php" method="POST" enctype="multipart/form-data">
-        <p>First Name</p>
-        <input id="Fname" name="Fname" class="search-bar" type="text" placeholder="First Name" required>
-        <p>Last Name</p>
-        <input id="Lname" name="Lname" class="search-bar" type="text" placeholder="Last Name" required>
-        <p>Middle Name</p>
-        <input id="Mname" name="Mname" class="search-bar" type="text" placeholder="Middle Name" required>
-        <p>Suffix</p>
-        <input id="suffix" name="suffix" class="search-bar" type="text" placeholder="(Jr,)">
-
-        <p>Username</p>
-        <input id="username" name="username" class="username-bar" type="text" placeholder="Enter Username" required>
-        <div id="username_status" class="status-message"></div>
-
-        <p>Email</p>
-        <input id="email" name="email" class="email-bar" type="email" placeholder="Enter Email" required> <br>
-        <div id="email_status" class="status-message"></div>
-
-        <p>Address</p>
-        <input id="address" name="address" class="search-bar" type="text" placeholder="Enter Address" required> <br>
-        <p>Contact</p>
-        <input id="contact" name="contact" class="search-bar" type="tel" placeholder="Enter Contact Number" required> <br>
-
-        <p>Password</p>
-        <input id="password" name="password" class="email-bar" type="password" placeholder="Enter Password" required> <br>
-        <div id="password_status" class="status-message"></div>
-
-        <p>Confirm Password</p>
-        <input id="confirm_password" name="confirm_password" class="email-bar" type="password" placeholder="Confirm Password" required> <br>
-        <div id="confirm_status" class="status-message"></div>
-
-        <p class="brgyp">Barangay ID</p>
-        <div class="file">
-          <input id="barangay-id" name="barangay_id" type="file" accept=".jpg,.png,.pdf">
-        </div>
-        <br>
-
-        <input class="signup" type="submit" value="Sign Up">
-      </form>
+  <div class="container">
+    <div class="left">
+      <div class="logo"><span class="material-symbols-outlined">health_cross</span></div>
+      <h1>Medicine Request System</h1>
+      <p>Barangay 35 - Maypajo - Caloocan City</p>
     </div>
 
+    <div class="right">
+      <h2>Sign up now</h2>
+      <form id="signupForm">
+        <div class="form-group">
+          <input type="text" id="fname" placeholder="First name" required>
+          <input type="text" id="mname" placeholder="Middle name" required>
+          <input type="text" id="lname" placeholder="Last name" required>
+        </div>
+
+        <input type="text" id="fname" placeholder="Username" required>
+
+        <form id="signupForm">
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Email address" required>
+        <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" id="phone" placeholder="Phone number" required>
+        </div>
+
+        <input type="password" id="password" placeholder="Password" type="password" required>
+
+        <input type="password" id="confirmpassword" placeholder="Confirm Password" type="password" required>
+
+        <div class="terms">
+          <input class="checkbox" type="checkbox" id="terms" required>
+          I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+        </div>
+
+        <button type="submit">Sign up</button>
+
+        <div class="login-link">
+        Already have an account? <a href="signup.html">Log in</a>
+      </div>
+        </div>
+      </form>
+    </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="./public/js/username.js"></script>
-  <script src="./public/js/email.js"></script>
-  <script src="./public//js/password.js"></script>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  let fname = document.getElementById("fname").value.trim();
+  let mname = document.getElementById("mname").value.trim();
+  let lname = document.getElementById("lname").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let password = document.getElementById("password").value.trim();
+  let confirmpassword = document.getElementById("confirmpassword").value.trim();
+  let terms = document.getElementById("terms").checked;
+
+  if (!fname || !mname|| !lname || !email || !phone || !password || !confirmpassword || !terms) {
+    Swal.fire({
+      title: "Error!",
+      text: "Please fill in all required fields and agree to the terms.",
+      icon: "error",
+      confirmButtonColor: "#d33"
+    });
+    return;
+  }
+
+ 
+  if (password.length < 8) {
+    Swal.fire({
+      title: "Weak Password",
+      text: "Password must be at least 8 characters long.",
+      icon: "warning",
+      confirmButtonColor: "#f0ad4e"
+    });
+    return;
+  }
+
+  if (password !== confirmpassword) {
+    Swal.fire({
+      icon: "error",
+      title: "Password Mismatch",
+      text: "Passwords do not match!",
+      confirmButtonColor: "#d33"
+    });
+    return;
+  }
 
 
+  Swal.fire({
+    icon: "success",
+    title: "Account Created!",
+    text: "Your account has been created successfully.",
+    confirmButtonColor: "#00c853"
+  }).then(() => {
+    window.location.href = "login.html"; 
+  });
+});
+</script>
 
 
 </body>
-
 </html>
