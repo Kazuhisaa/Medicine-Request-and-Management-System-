@@ -1,32 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  <link rel="stylesheet" href="login.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="public/css/login.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=pill" />
+
 </head>
-
 <body>
-  <div class="content">
-    <div class="box">
-      <p class="Login">Login</h1>
+  <div class="container">
+    <div class="logo">
+      <span class="material-symbols-outlined">
+        pill
+      </span>
+    </div>
 
-      <form action="" method="post">
-        <p>Email</p>
-        <input id="email" name="email" class="search-bar" type="email" placeholder="Enter Email" required>
-        <p>Password</p>
-        <input id="password" name="password" class="search-bar" type="password" placeholder="Enter Password" required> <br>
-        <button class="loginbutton">Login</button>
-        <p class="signup">
-          Don't have an account? <a href="" class="under">Sign Up</span>
-        </p>
+    <h1>Medicine Request System</h1>
+    <h2>Barangay 35 - Maypajo - Caloocan City</h2>
+
+    <div class="card">
+      <h3>Welcome Back</h3>
+      <p>Sign in to your account to request medicines</p>
+
+      <form id="loginForm">
+        <input id="email" name="email" class="search-bar" type="email" placeholder="Email Address" required>
+
+        <input id="password" name="password" class="search-bar" type="password" placeholder="Password" required>
+
+        <button type="submit">Login</button>
+      </form>
+
+      <div class="forgot-password">
+        <a href="">Forgot Password?</a>
+      </div>
+
+      <div class="signup-link">
+        Don't have an account? <a href="signup.html">Sign up here</a>
+      </div>
+    </div>
+    <div class="footer-msg">
+      Your information is secure and protected
+    </div>
     </div>
   </div>
-  </form>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+
+      Swal.fire({
+        title: "Successfully Logged In!",
+        text: "Welcome back!",
+        icon: "success",
+        confirmButtonColor: "#4CAF50"
+      });
+    });
+  </script>
+</body>
+</html>
+
