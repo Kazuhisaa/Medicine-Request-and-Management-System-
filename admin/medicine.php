@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Botika ng Barangay 35</title>
-  <link rel="stylesheet" href="./css/panel.css">
+  <link rel="stylesheet" href="../public/css/medicine.css">
 </head>
 <body>
     <style>
