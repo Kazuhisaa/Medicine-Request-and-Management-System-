@@ -1,68 +1,152 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', Arial;
+    }
 
+    body {
+      background: linear-gradient(to bottom right, #fffaf5, #e1faee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+      min-height: 100vh;
+    }
 
-p{
-    font-family: Roboto, Arial;
-    margin: 0;
-    margin-bottom: 3px;
-    font-weight: 400;
-    text-align: left;
-    font-size: 18px;
-}
+    .container {
+      width: 400px;
+      text-align: center;
+    }
 
-.Login{
-    text-align: center;
-    font-size: 30px;
-    font-weight: 500;
-    margin-bottom: 30px;
-}
+    .logo {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff8a00, #00c853);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.search-bar{
-    margin-bottom: 20px;
-    width: 300px;
-    border: solid;
-    border-width: 1px;
-    height: 25px;
-    font-family: Roboto, Arial;
-    font-size: 15px;
-}
+    .logo span {
+      font-size: 40px;
+      color: white;
+    }
 
-.loginbutton{
-    font-family: Roboto, Arial;
-    border-radius: 3px;
-    border: solid;
-    border-width: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px ;
-    padding-bottom: 5px;
-    font-size: 18px;
-    margin-bottom: 20px;
-    background-color: white;
-    cursor: pointer;
-}
+    h1 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #222;
+    }
 
-.box{
-    display: inline-block;
-    text-align: center;
-    border-radius: 15px;
-    padding-left: 100px;
-    padding-right: 100px ;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    border-width: 10px;
-    border: solid;
+    h2 {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+      font-weight: 100;
+    }
 
-}
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
 
-.signup{
-    text-align: center;
-}
+    .card h3 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #222;
+    }
 
-.under{
-    color: black;
-}
+    .card p {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #666;
+    }
 
-.content{
-    display: flex;
-    justify-content: center;
-}
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #00c853;
+      box-shadow: 0 0 5px rgba(0, 200, 83, 0.4);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #ff8a00, #00c853);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 1s ease;
+    }
+
+    button:hover {
+      background: #009624;
+    }
+
+      .forgot-password {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .forgot-password a {
+      font-size: 13px;
+      color: #ff5722;
+      text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .signup-link a {
+      color: #ff5722;
+      font-weight: 100;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-msg {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }

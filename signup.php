@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
 
-   <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="public/css/signup.css">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
 
@@ -14,6 +15,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
+
 <body>
 
   <div class="container">
@@ -23,98 +25,158 @@
       <p>Barangay 35 - Maypajo - Caloocan City</p>
     </div>
 
+    <style>
+      .status-message {
+        font-size: 13px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        display: block;
+        transition: color 0.3s ease, transform 0.2s ease;
+      }
+
+      /* kapag valid / available */
+      .status-message.available {
+        color: #4CAF50;
+        /* green */
+        font-weight: 500;
+      }
+
+      /* kapag invalid / taken */
+      .status-message.taken {
+        color: #e53935;
+        /* red */
+        font-weight: 500;
+      }
+    </style>
+
+
     <div class="right">
       <h2>Sign up now</h2>
-      <form id="signupForm">
+      <form id="signupForm" action="process/signup_process.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-          <input type="text" id="fname" placeholder="First name" required>
-          <input type="text" id="mname" placeholder="Middle name" required>
-          <input type="text" id="lname" placeholder="Last name" required>
+          <input type="text" id="Fname" name="Fname" placeholder="First name">
+          <input type="text" id="Mname" name="Mname" placeholder="Middle name">
+          <input type="text" id="Lname" name="Lname" placeholder="Last name">
+          <input type="text" id="suffix" name="suffix" placeholder="suffix">
+
         </div>
 
-        <input type="text" id="fname" placeholder="Username" required>
+        <input type="text" id="username" name="username" placeholder="Username">
+        <div id="username_status" class="status-message"></div>
 
-        <form id="signupForm">
         <div class="form-group">
-          <input type="email" id="email" placeholder="Email address" required>
-        <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" id="phone" placeholder="Phone number" required>
+          <input type="email" id="email" name="email" placeholder="Email address">
+          <input type="tel" pattern="^09\d{9}$" id="contact" name="contact" placeholder="Phone number">
+        </div>
+        <div id="email_status" class="status-message"></div>
+
+
+        <input type="password" id="password" name="password" placeholder="Password">
+        <div id="password_status" class="status-message"></div>
+
+
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+        <div id="confirm_status" class="status-message"></div>
+
+        <div class="upload-box">
+          <input type="file" id="valid_id" name="valid_id" accept="image/jpeg,image/png,application/pdf">
+          <label for="valid_id">Upload Valid ID</label>
+          <p class="upload-note">Accepted formats: JPEG, PNG, PDF (max 2MB)</p>
+          <small id="file_name" style="display:block; margin-top:5px; color:gray;"></small>
+
         </div>
 
-        <input type="password" id="password" placeholder="Password" type="password" required>
-
-        <input type="password" id="confirmpassword" placeholder="Confirm Password" type="password" required>
 
         <div class="terms">
-          <input class="checkbox" type="checkbox" id="terms" required>
+          <input class="checkbox" type="checkbox" id="terms" name="terms">
           I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
         </div>
 
-        <button type="submit">Sign up</button>
+        <button type="submit" class="signup">Sign up</button>
 
         <div class="login-link">
-        Already have an account? <a href="signup.html">Log in</a>
-      </div>
+          Already have an account? <a href="login.php">Log in</a>
         </div>
       </form>
     </div>
   </div>
 
-<script>
-document.getElementById("signupForm").addEventListener("submit", function(event) {
-  event.preventDefault();
 
-  let fname = document.getElementById("fname").value.trim();
-  let mname = document.getElementById("mname").value.trim();
-  let lname = document.getElementById("lname").value.trim();
-  let email = document.getElementById("email").value.trim();
-  let phone = document.getElementById("phone").value.trim();
-  let password = document.getElementById("password").value.trim();
-  let confirmpassword = document.getElementById("confirmpassword").value.trim();
-  let terms = document.getElementById("terms").checked;
-
-  if (!fname || !mname|| !lname || !email || !phone || !password || !confirmpassword || !terms) {
-    Swal.fire({
-      title: "Error!",
-      text: "Please fill in all required fields and agree to the terms.",
-      icon: "error",
-      confirmButtonColor: "#d33"
+  <script>
+    document.getElementById('valid_id').addEventListener('change', function() {
+      let fileName = this.files[0] ? this.files[0].name : "No file chosen";
+      document.getElementById('file_name').textContent = "Selected file: " + fileName;
     });
-    return;
-  }
+  </script>
 
- 
-  if (password.length < 8) {
-    Swal.fire({
-      title: "Weak Password",
-      text: "Password must be at least 8 characters long.",
-      icon: "warning",
-      confirmButtonColor: "#f0ad4e"
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let form = this;
+      let formData = new FormData(form);
+
+      let fname = form.Fname.value.trim();
+      let mname = form.Mname.value.trim();
+      let lname = form.Lname.value.trim();
+      let suffix = form.suffix.value.trim();
+      let username = form.username.value.trim();
+      let email = form.email.value.trim();
+      let phone = form.contact.value.trim();
+      let password = form.password.value.trim();
+      let confirmpassword = form.confirm_password.value.trim();
+      let terms = form.terms.checked;
+      let validId = form.valid_id.files[0];
+
+      if (!fname || !lname || !username || !email || !phone || !password || !confirmpassword || !terms) {
+        Swal.fire({
+          icon: "error",
+          title: "Error!",
+          text: "Please fill in all required fields and agree to the terms.",
+          confirmButtonColor: "#d33"
+        });
+        return;
+      }
+
+
+      fetch("process/signup_process.php", {
+          method: "POST",
+          body: formData
+        })
+        .then(res => res.text())
+        .then(data => {
+          if (data.includes("success")) {
+            Swal.fire({
+              icon: "success",
+              title: "Account Created!",
+              text: "Your account has been created successfully.",
+              confirmButtonColor: "#00c853"
+            }).then(() => window.location.href = "login.php");
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Signup Failed",
+              text: data,
+              confirmButtonColor: "#d33"
+            });
+          }
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: "error",
+            title: "Error!",
+            text: "Something went wrong. Try again.",
+            confirmButtonColor: "#d33"
+          });
+          console.error(err);
+        });
     });
-    return;
-  }
+  </script>
 
-  if (password !== confirmpassword) {
-    Swal.fire({
-      icon: "error",
-      title: "Password Mismatch",
-      text: "Passwords do not match!",
-      confirmButtonColor: "#d33"
-    });
-    return;
-  }
-
-
-  Swal.fire({
-    icon: "success",
-    title: "Account Created!",
-    text: "Your account has been created successfully.",
-    confirmButtonColor: "#00c853"
-  }).then(() => {
-    window.location.href = "login.html"; 
-  });
-});
-</script>
-
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./public/js/username.js"></script>
+  <script src="./public/js/email.js"></script>
+  <script src="./public//js/password.js"></script>
 </body>
+
 </html>

@@ -2,49 +2,51 @@
 include "../config/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $firstname = trim($_POST['Fname']);
-  $lastname = trim($_POST['Lname']);
-  $middlename = trim($_POST['Mname']);
+  $fname = trim($_POST['Fname']);
+  $lname = trim($_POST['Lname']);
+  $mname = trim($_POST['Mname']);
   $suffix = trim($_POST['suffix']);
   $username = trim($_POST['username']);
   $email = trim($_POST['email']);
   $contact = trim($_POST['contact']);
   $password = trim($_POST['password']);
   $confirm_password = trim($_POST['confirm_password']);
-  $barangay_id = $_FILES['barangay_id'] = null;
 
-  if (isset($_FILES['barangay_id']) && $_FILES['barangay_id']['error'] === 0) {
-    $targetDir = "../uploads/";
-    $uniq_name = uniqid() . "_" . basename($_FILES["barangay_id"]["name"]);
-    $targetfile = $targetDir . $uniq_name;
-    if (move_uploaded_file($_FILES["barangay_id"]["tmp_name"], $targetfile)) {
-      $barangay_id = $targetfile;
+  $valid_id = null;
+
+  if (isset($_FILES['valid_id']) && $_FILES['valid_id']['error'] === 0) {
+    $targetDir = "../public/uploads/";
+    $fileName = uniqid() . "_" . basename($_FILES["valid_id"]["name"]);
+    $targetFile = $targetDir . $fileName;
+
+    $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+    $allowedTypes = ['jpg', 'jpeg', 'png', 'pdf'];
+
+    if (!in_array($fileType, $allowedTypes)) {
+      die("❌ Only JPG, JPEG, PNG, PDF files are allowed.");
     }
+
+    if (!move_uploaded_file($_FILES["valid_id"]["tmp_name"], $targetFile)) {
+      die("❌ Error uploading valid ID.");
+    }
+
+    $valid_id = $fileName; // store filename only in DB
   }
 
-
-
-
   $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-  $stmt = $conn->prepare("
-    INSERT INTO users 
-    (Fname, Lname, Mname, suffix, username, email, contact, password, barangay_id) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-");
-
+  $stmt = $conn->prepare("INSERT INTO users (Fname, Mname, Lname, suffix, username, email, contact, password, valid_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
   $stmt->bind_param(
     "sssssssss",
-    $firstname,
-    $lastname,
-    $middlename,
+    $fname,
+    $mname,
+    $lname,
     $suffix,
     $username,
     $email,
     $contact,
     $hashed_password,
-    $barangay_id
+    $valid_id
   );
-
 
   if ($stmt->execute()) {
     echo "Registration successful!";

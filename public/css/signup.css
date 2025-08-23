@@ -1,98 +1,194 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #fffaf5, #e1faee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      width: 900px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo span {
+      font-size: 50px;
+      color: white;
+      text-align: center;
+    }
+
+    .left {
+      background: linear-gradient(to right, #ff8a00, #00c853);
+      color: white;
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .left h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .left p {
+      font-size: 16px;
+      color: #fffefe;
+    }
+
+    .right {
+      flex: 1.5;
+      padding: 40px;
+      background: #fff;
+    }
+
+    .right h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      gap: 10px;  
+    }
 
 
-p{
-    font-family: Roboto, Arial;
-    margin: 0;
-    margin-bottom: 3px;
-    font-weight: 400;
-    text-align: left;
-    font-size: 18px;
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="tel"]:focus,
+    select:focus {
+      border-color: #00c853;
+      box-shadow: 0 0 5px rgba(0, 200, 83, 0.4);
+    }
+
+    
+.upload-box {
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
 }
-.content{
-    display: flex;
-    justify-content: center;
+
+.upload-box:hover {
+  border-color: #00c853;
+  background: #f1fff7;
 }
 
-.Login{
-    text-align: center;
-    font-size: 30px;
-    font-weight: 500;
-    margin-bottom: 30px;
+.upload-box input[type="file"] {
+  display: none; /* para mawala yung default ugly file input */
 }
 
-.search-bar{
-    margin-bottom: 20px;
-    width: 300px;
-    border: solid;
-    border-width: 1px;
-    height: 25px;
-    font-family: Roboto, Arial;
-    font-size: 15px;
+.upload-box label {
+  display: inline-block;
+  background: linear-gradient(to right, #ff8a00, #00c853);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.upload-box label:hover {
+  opacity: 0.9;
+}
+
+.upload-note {
+  font-size: 13px;
+  color: #666;
+  margin-top: 10px;
 }
 
 
-.email-bar,.username-bar{
-    margin-bottom: 10px;
-    width: 300px;
-    border: solid;
-    border-width: 1px;
-    height: 25px;
-    font-family: Roboto, Arial;
-    font-size: 15px;
-}
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #ff8a00, #00c853);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
 
-.file{
-    display: flex;
-}
+    .terms {
+      font-size: 13px;
+      margin-bottom: 15px;
+      vertical-align: middle;
+    }
+    .terms input {
+      margin-right: 5px;
+    }
+    .terms a {
+      color: #ff5722;
+      text-decoration: none;
+    }
+    .terms a:hover {
+      text-decoration: underline;
+    }
 
-.chooseFile{
-    font-family: Roboto, Arial;
-    border-radius: 3px;
-    border: solid;
-    border-width: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 1px ;
-    padding-bottom: 1px;
-    font-size: 15px;
-    margin-bottom: 20px;
-    background-color: white;
-}
-.p-file{
-    font-size: 15px;
-    display:inline-block;
-    margin-left: 10px;
 
-}
+    .login-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
 
-.signup{
-    font-family: Roboto, Arial;
-    border-radius: 3px;
-    border: solid;
-    border-width: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px ;
-    padding-bottom: 5px;
-    font-size: 18px;
-    margin-bottom: 20px;
-    background-color: white;
-}
+    .login-link a {
+      color: #ff5722;
+      font-weight: 100;
+      text-decoration: none;
+    }
 
-.box{
-    display: inline-block;
-    text-align: center;
-    border-radius: 15px;
-    padding-left: 100px;
-    padding-right: 100px ;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    border-width: 10px;
-    border: solid;
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+    
+    .checkbox {
+      accent-color: #ff8a00;
+    }
 
-}
-
-.brgyp{
-    margin-bottom: 10px;
-}
-
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        width: 100%;
+        margin: 20px;
+      }
+    }

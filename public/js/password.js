@@ -16,7 +16,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#confirm_`password").on("input", function() {
+    $("#confirm_password").on("input", function() {
         let password = $("#password").val().trim();
         let confirmPassword = $(this).val().trim();
 
