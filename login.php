@@ -6,12 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="public/css/login.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=pill" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -30,16 +28,15 @@
       <h3>Welcome Back</h3>
       <p>Sign in to your account to request medicines</p>
 
-      <form id="loginForm">
-        <input id="email" name="email" class="search-bar" type="email" placeholder="Email Address" required>
+      <form id="loginForm" action="/process/login_process.php" method="POST">
+        <input id="identifier" name="identifier" class="search-bar" type="text" placeholder=" Username / Email Address">
+        <input id="password" name="password" class="search-bar" type="password" placeholder="Password">
 
-        <input id="password" name="password" class="search-bar" type="password" placeholder="Password" required>
-
-        <button type="submit">Login</button>
+        <button type="submit" id="login" name="login">Login</button>
       </form>
 
       <div class="forgot-password">
-        <a href="">Forgot Password?</a>
+        <a href="forgotpassword.php">Forgot Password?</a>
       </div>
 
       <div class="signup-link">
@@ -53,17 +50,58 @@
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-      event.preventDefault();
+    $(document).ready(function() {
+      $("#loginForm").on("submit", function(e) {
+        e.preventDefault(); // prevent normal form submit
 
-      Swal.fire({
-        title: "Successfully Logged In!",
-        text: "Welcome back!",
-        icon: "success",
-        confirmButtonColor: "#4CAF50"
+        var identifier = $("#identifier").val().trim();
+        var password = $("#password").val().trim();
+
+        if (identifier === "" || password === "") {
+          Swal.fire({
+            icon: "warning",
+            title: "Missing Fields",
+            text: "Please fill in both fields."
+          });
+          return;
+        }
+
+        $.ajax({
+          url: "process/login_process.php", // path sa PHP
+          method: "POST",
+          data: {
+            identifier: identifier,
+            password: password
+          },
+          success: function(response) {
+            // response galing sa PHP
+            if (response === "success") {
+              Swal.fire({
+                icon: "success",
+                title: "Login Successful!",
+                text: "Welcome back!",
+                confirmButtonColor: "#4CAF50"
+              }).then(() => window.location.href = "user/dashboard.php");
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "Login Failed",
+                text: response
+              });
+            }
+          },
+          error: function() {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Something went wrong. Try again later."
+            });
+          }
+        });
       });
     });
   </script>
+
 </body>
 
 </html>
