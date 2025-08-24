@@ -66,7 +66,7 @@
 
         <div class="form-group">
           <input type="email" id="email" name="email" placeholder="Email address">
-          <input type="tel" pattern="^09\d{9}$" id="contact" name="contact" placeholder="Phone number">
+          <input type="tel" pattern="^09\d{9}$" id="contact" name="contact" maxlength="11" placeholder="Phone number">
         </div>
         <div id="email_status" class="status-message"></div>
 
