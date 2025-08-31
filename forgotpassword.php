@@ -44,7 +44,7 @@ lock
         <hr>
 
         <div class="back">
-        <a href="login.html"><span class="material-symbols-outlined">arrow_back</span>Back to Login</a>
+        <a href="login.php"><span class="material-symbols-outlined">arrow_back</span>Back to Login</a>
       </div>
 
       <hr>
@@ -95,7 +95,7 @@ mail
         <button id="tryAgainBtn" class="outline-btn">Try Again</button>
 
         <div class="back">
-        <a href="login.html"><span class="material-symbols-outlined">arrow_back</span>Back to Login</a>
+        <a href="login.php"><span class="material-symbols-outlined">arrow_back</span>Back to Login</a>
       </div>
 
       <hr>
