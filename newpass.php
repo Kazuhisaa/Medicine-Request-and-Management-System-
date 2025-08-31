@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Forget Password</title>
-  <link rel="stylesheet" href="newpass.css">
+  <link rel="stylesheet" href="href="../css/newpass.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
@@ -48,7 +48,7 @@ lock_open
       </form>
 
       <div class="back">
-        <a href="login.html"><span class="material-symbols-outlined">arrow_back</span>Back to Login</a>
+        <a href="login.php"><span class="material-symbols-outlined">arrow_back</span>Back to Login</a>
       </div>
 
       <hr>
