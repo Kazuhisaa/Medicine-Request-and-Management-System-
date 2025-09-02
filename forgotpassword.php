@@ -31,7 +31,7 @@
         <h2>Reset Your Password</h2>
         <p>Enter your email address to receive reset instructions</p>
 
-        <form id="forgotForm">
+        <form id="forgotForm" action="process/forgotPassword_process.php" method="POST">
           <div class="form-group">
             <input type="email" id="email" name="email" placeholder="Email address" required>
             <small>Enter the email address registered with your account</small>
