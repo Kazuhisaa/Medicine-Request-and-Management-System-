@@ -28,7 +28,7 @@
       <h2>Update Your Password</h2>
       <p>Choose a strong password to keep your account secure</p>
 
-      <form id="loginForm" action="" method="POST">
+      <form id="loginForm" action="process/newPassword_process.php" method="POST">
         <div class="input-wrapper">
 
           <input id="identifier" name="identifier" class="search-bar" type="password" placeholder="New Password" required>
