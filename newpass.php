@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Forget Password</title>
-  <link rel="stylesheet" href="href="../css/newpass.css">
+  <link rel="stylesheet" href="public/css/newpass.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
@@ -17,8 +17,8 @@
   <div class="container">
     <div class="logo">
       <span class="material-symbols-outlined">
-lock_open
-</span>
+        lock_open
+      </span>
     </div>
 
     <h1>Change Password</h1>
@@ -29,21 +29,21 @@ lock_open
       <p>Choose a strong password to keep your account secure</p>
 
       <form id="loginForm" action="" method="POST">
-      <div class="input-wrapper">
+        <div class="input-wrapper">
 
-        <input id="identifier" name="identifier" class="search-bar" type="password" placeholder="New Password" required>
+          <input id="identifier" name="identifier" class="search-bar" type="password" placeholder="New Password" required>
 
-        <input id="identifier" name="identifier" class="search-bar" type="password" placeholder="Confirm Password" required>
-        <small>Enter the Email Address registered with your Account</small>
+          <input id="identifier" name="identifier" class="search-bar" type="password" placeholder="Confirm Password" required>
+          <small>Enter the Email Address registered with your Account</small>
 
-        <div class="note">
-          <strong>Password Tips:</strong> <br>
-• Use a unique password you don't use elsewhere <br>
-• Mix uppercase, lowercase, numbers, and symbols <br>
-• Avoid personal information like birthdays or names <br>
-        </div>
+          <div class="note">
+            <strong>Password Tips:</strong> <br>
+            • Use a unique password you don't use elsewhere <br>
+            • Mix uppercase, lowercase, numbers, and symbols <br>
+            • Avoid personal information like birthdays or names <br>
+          </div>
 
-<a href="newpass.html" class="btn-link">Submit</a>
+          <a href="newpass.html" class="btn-link">Submit</a>
 
       </form>
 
@@ -57,11 +57,11 @@ lock_open
         Need Help? <a href="#">Contact Barangay Health Center</a>
       </div>
     </div>
-</div>
-    <div class="footer-msg">
-      <span class="material-symbols-outlined">shield</span>
-      Your information is secure and protected
-    </div>
+  </div>
+  <div class="footer-msg">
+    <span class="material-symbols-outlined">shield</span>
+    Your information is secure and protected
+  </div>
   </div>
 </body>
 
