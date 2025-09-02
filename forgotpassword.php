@@ -110,62 +110,8 @@
   </div>
   </div>
 
-  <script>
-    function maskEmail(value) {
-      const [local, domain] = value.split("@");
-      if (!domain) return value;
-      if (local.length <= 2) {
-        return `${local[0] ?? ""}***@${domain}`;
-      }
-      const first = local[0];
-      const last = local[local.length - 1];
-      const stars = "*".repeat(Math.max(3, local.length - 2));
-      return `${first}${stars}${last}@${domain}`;
-    }
 
-    const form = document.getElementById("forgotForm");
-    const formContainer = document.getElementById("form-container");
-    const successContainer = document.getElementById("success-container");
-    const maskedEmailEl = document.getElementById("maskedEmail");
-    const tryAgainBtn = document.getElementById("tryAgainBtn");
-    const submitBtn = document.getElementById("submitBtn");
 
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const email = document.getElementById("email").value.trim();
-
-      if (!email) {
-        alert("Please enter your email");
-        return;
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert("Please enter a valid email address");
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Sending...";
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Send Reset Instructions";
-        formContainer.classList.add("hidden");
-        successContainer.classList.remove("hidden");
-        maskedEmailEl.innerText =
-          "An email with password reset instructions has been sent to " +
-          maskEmail(email) + ".";
-      }, 2000);
-    });
-
-    tryAgainBtn.addEventListener("click", () => {
-      formContainer.classList.remove("hidden");
-      successContainer.classList.add("hidden");
-      document.getElementById("email").value = "";
-    });
-  </script>
 </body>
 
 </html>

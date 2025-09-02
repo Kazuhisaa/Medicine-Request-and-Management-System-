@@ -29,16 +29,13 @@ if (isset($_POST['submit'])) {
     $mail = new PHPMailer(true);
 
     try {
-      $mail->SMTPDebug = 2;
-      $mail->Debugoutput = 'html';
-
 
       $mail->isSMTP();
       $mail->Host = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
       $mail->Username = 'noreplyMedrms35@gmail.com';
-      $mail->Password = 'kqyi yioi ojqg glnm';
-      $mail->SMTPSecure = 'tls';
+      $mail->Password = 'fmjw fepx qzhe yykz';
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
       $mail->Port = 587;
       $mail->MessageID = '<' . md5(uniqid(time())) . '@gmail.com>';
 
@@ -48,6 +45,7 @@ if (isset($_POST['submit'])) {
       $mail->Subject = 'Password Reset Request';
       $mail->Body = "Hi, \n\nPlease Click the Link below to reset your password:\n$resetLink\n\n This link will expire after 1 hour.";
       $mail->send();
+      echo "Password reset link sent to your Email.";
     } catch (Exception $e) {
       echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
