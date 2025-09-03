@@ -13,6 +13,30 @@
 
   </head>
 
+  <style>
+    .status-message {
+      font-size: 13px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: block;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    /* kapag valid / available */
+    .status-message.available {
+      color: #4CAF50;
+      /* green */
+      font-weight: 500;
+    }
+
+    /* kapag invalid / taken */
+    .status-message.taken {
+      color: #e53935;
+      /* red */
+      font-weight: 500;
+    }
+  </style>
+
   <body>
     <div class="container">
       <div class="logo">
@@ -30,10 +54,16 @@
 
         <form id="loginForm" action="process/newPassword_process.php" method="POST">
           <div class="input-wrapper">
-            <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>">
-            <input id="identifier" class="search-bar" type="password" name="password" placeholder="New Password" required>
+            <input type="hidden" name="token" value="<?php echo htmlspecialchars($_GET['token']); ?>">
 
-            <input id="identifier" class="search-bar" type="password" name="confirmpassword" placeholder="Confirm Password" required>
+
+            <input id="password" class="search-bar" type="password" name="password" placeholder="New Password" required>
+            <div id="password_status" class="status-message"></div>
+
+
+            <input id="confirm_password" class="search-bar" type="password" name="confirmPassword" placeholder="Confirm Password" required>
+            <div id="confirm_status" class="status-message"></div>
+
             <small>Enter the Email Address registered with your Account</small>
 
             <div class="note">
@@ -64,5 +94,7 @@
     </div>
     </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./public/js/password.js"></script>
 
   </html>
