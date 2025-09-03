@@ -24,6 +24,8 @@ if (isset($_POST['submit'])) {
 
     $Tokens = bin2hex(random_bytes(32));
     $hashTokens = hash('sha256', $Tokens);
+
+    date_default_timezone_set('Asia/Manila');
     $expire = date("Y-m-d H:i:s", strtotime('+1 hour'));
 
     $insert = $conn->prepare("INSERT INTO password_resets (email, token, expires_at) VALUES (?,?,?)");
