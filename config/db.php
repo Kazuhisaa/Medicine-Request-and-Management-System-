@@ -4,7 +4,7 @@ $user = "root";
 $pass = "";
 $db   = "medrms";
 
-date_default_timezone_set('UTC');
+mysqli_query($conn, "SET time_zone = '+00:00'");
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 
