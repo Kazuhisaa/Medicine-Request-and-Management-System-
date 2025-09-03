@@ -176,7 +176,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./public/js/username.js"></script>
   <script src="./public/js/email.js"></script>
-  <script src="./public//js/password.js"></script>
+  <script src="./public/js/password.js"></script>
 </body>
 
 </html>
