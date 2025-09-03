@@ -5,49 +5,53 @@ require __DIR__ . '/../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+include '../config/db.php';
+
+
 if (isset($_POST['submit'])) {
-  include '../config/db.php';
+  $email = trim($_POST['email']);
 
-  $email = $_POST['email'];
-
-  $check = $conn->prepare("SELECT * FROM users WHERE email = ?");
+  $check = $conn->prepare("SELECT * FROM users WHERE email =?");
   $check->bind_param("s", $email);
   $check->execute();
   $result = $check->get_result();
 
+
   if ($result->num_rows > 0) {
-    $token = bin2hex(random_bytes(50));
-    $expires = date("Y-m-d H:i:s", strtotime('+1 hour'));
+    $delete = $conn->prepare("DELETE FROM password_resets WHERE email =?");
+    $delete->bind_param("s", $email);
+    $delete->execute();
 
+    $Tokens = bin2hex(random_bytes(32));
+    $hashTokens = hash('sha256', $Tokens);
+    $expire = date("Y-m-d H:i:s", strtotime('+1 hour'));
 
-    $update = $conn->prepare("UPDATE users SET reset_token =?, reset_expires =? WHERE email =?");
-    $update->bind_param("sss", $token, $expires, $email);
-    $update->execute();
+    $insert = $conn->prepare("INSERT INTO password_resets (email, token, expires_at) VALUES (?,?,?)");
+    $insert->bind_param("sss", $email, $hashTokens, $expire);
+    $insert->execute();
 
-    $resetLink = "http://medrms.test/newpass.php?token=" . $token;
+    $resetLink = 'http://medrms.test/newpass.php?token=' . $Tokens;
 
     $mail = new PHPMailer(true);
-
     try {
-
       $mail->isSMTP();
       $mail->Host = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
-      $mail->Username = 'noreplyMedrms35@gmail.com';
-      $mail->Password = 'fmjw fepx qzhe yykz';
+      $mail->Username = 'noreplymedrms35@gmail.com';
+      $mail->Password = 'okax zahi qbys ynaz';
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
       $mail->Port = 587;
-      $mail->MessageID = '<' . md5(uniqid(time())) . '@gmail.com>';
 
-      $mail->setFrom('noreplyMedrms35@gmail.com', 'medrms');
+      $mail->setFrom('noreplymedrms35@gmail.com', 'medrms');
       $mail->addAddress($email);
-
-      $mail->Subject = 'Password Reset Request';
-      $mail->Body = "Hi, \n\nPlease Click the Link below to reset your password:\n$resetLink\n\n This link will expire after 1 hour.";
+      $mail->Subject = 'Password Reset';
+      $mail->Body = "Hi. \n\n Click the lick to reset your password: \n $resetLink\n\n This is only valid for 1 hour.";
       $mail->send();
-      echo "Password reset link sent to your Email.";
+      echo "Password Reset link Sent";
     } catch (Exception $e) {
-      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+      echo "Mailer Error: {$mail->ErrorInfo}";
     }
+  } else {
+    echo "No Account with that Email";
   }
 }
