@@ -52,4 +52,33 @@ $(document).ready(function () {
 
         toggleSignup();
     });
+
+    // 🚀 SweetAlert after successful form submission
+    $("#loginForm").on("submit", function (e) {
+        e.preventDefault(); // stop default form submission
+
+        $.ajax({
+            url: $(this).attr("action"),
+            method: "POST",
+            data: $(this).serialize(),
+            success: function (response) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Password Changed",
+                    text: "Your password has been updated successfully!",
+                    confirmButtonColor: "#4CAF50"
+                }).then(() => {
+                    window.location.href = "login.php"; // redirect after alert
+                });
+            },
+            error: function () {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong. Please try again.",
+                    confirmButtonColor: "#e53935"
+                });
+            }
+        });
+    });
 });
