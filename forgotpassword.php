@@ -62,56 +62,6 @@
       </div>
     </div>
 
-    <!-- Success Screen -->
-    <div id="success-container" class="card-container hidden">
-      <div class="header">
-        <div class="logo">
-          <span class="material-symbols-outlined">
-            check
-          </span>
-        </div>
-
-        <h1>Request Sent!</h1>
-        <h2>Barangay 35 - Maypajo - Caloocan City</h2>
-      </div>
-
-      <div class="card">
-        <h2>Check Your Email</h2>
-        <p>We've sent password reset instructions to your email</p>
-
-        <div class="success-box">
-          <div class="icon-wrapper">
-            <div class="ping"></div>
-            <div class="icon"><span class="material-symbols-outlined">
-                mail
-              </span></div>
-          </div>
-          <p id="maskedEmail"></p>
-          <div class="waiting">Waiting for verification<span class="dots">...</span></div>
-        </div>
-
-        <p class="info">
-          Didn't receive the email? Check your inbox and spam/junk folder, then try again in a few minutes.
-        </p>
-
-        <button id="tryAgainBtn" class="outline-btn">Try Again</button>
-
-        <div class="back">
-          <a href="login.php"><span class="material-symbols-outlined">arrow_back</span>Back to Login</a>
-        </div>
-
-        <hr>
-
-        <div class="help">
-          Need Help? <a href="#">Contact Barangay Health Center</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-
-
-
 </body>
 
 </html>
