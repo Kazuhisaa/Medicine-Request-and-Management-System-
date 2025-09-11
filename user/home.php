@@ -1,12 +1,12 @@
 <?php
 // --- SESSION AT DB CONNECTION ---
 session_start();
-include "db.php";
+include "../config/db.php";
 $conn = new mysqli("localhost", "root", "", "notification");
 // Dummy session values kung walang naka-login pa
 if (!isset($_SESSION['resident_name'])) {
-    $_SESSION['resident_name'] = "Juan Dela Cruz";
-    $_SESSION['barangay_id'] = "BRGY35-001";
+  $_SESSION['resident_name'] = "Juan Dela Cruz";
+  $_SESSION['barangay_id'] = "BRGY35-001";
 }
 
 $resident_id = $_SESSION['barangay_id'];
@@ -16,28 +16,30 @@ $notifications = [];
 $sql = "SELECT message FROM notifications WHERE resident_id = '$resident_id' ORDER BY created_at DESC";
 $result = $conn->query($sql);
 if ($result && $result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $notifications[] = $row['message'];
-    }
+  while ($row = $result->fetch_assoc()) {
+    $notifications[] = $row['message'];
+  }
 } else {
-    $notifications[] = "No new notifications.";
+  $notifications[] = "No new notifications.";
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Barangay 35 | Botika</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../public/css/userHome.css">
 </head>
+
 <body>
   <!-- Navbar -->
   <div class="navbar">
     <div class="left">
-  <img src="../public/uploads/514427783_122207432900261758_6664477712173394040_n-removebg-preview.png" alt="Logo" style="height:40px; margin-right:8px; vertical-align:middle;">
-  👤 HELLO! <?php echo $_SESSION['resident_name']; ?> (<?php echo $_SESSION['barangay_id']; ?>)
-</div>
+      <img src="../public/uploads/514427783_122207432900261758_6664477712173394040_n-removebg-preview.png" alt="Logo" style="height:40px; margin-right:8px; vertical-align:middle;">
+      👤 HELLO! <?php echo $_SESSION['resident_name']; ?> (<?php echo $_SESSION['barangay_id']; ?>)
+    </div>
     <div class="right">
       <i class="fas fa-bell" id="notifBtn" title="NOTIFICATION"></i>
       <a href="logout.php" title="LOG-OUT">
@@ -63,7 +65,7 @@ if ($result && $result->num_rows > 0) {
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Notifications</h2>
-      <?php foreach($notifications as $note): ?>
+      <?php foreach ($notifications as $note): ?>
         <p><?php echo $note; ?></p>
       <?php endforeach; ?>
     </div>
@@ -87,4 +89,5 @@ if ($result && $result->num_rows > 0) {
     }
   </script>
 </body>
+
 </html>
