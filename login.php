@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="public/css/login.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=pill" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
@@ -42,9 +43,14 @@
       <div class="signup-link">
         Don't have an account? <a href="signup.php">Sign up here</a>
       </div>
+      
+      <div class="admin-link">
+        Are you an Admin? <a href="admin-login.php">Sign in here</a>
+      </div>
+
     </div>
     <div class="footer-msg">
-      Your information is secure and protected
+      <span class="material-symbols-outlined">shield</span>Your information is secure and protected
     </div>
   </div>
   </div>
