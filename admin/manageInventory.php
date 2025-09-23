@@ -23,7 +23,7 @@ $inventory = $conn->query("SELECT * FROM inventory ORDER BY date_added DESC");
     <a href="manageUsers.php">👥 Users</a>
     <a href="manageMedicines.php">💊 Medicine</a>
     <a href="manageRequests.php">📋 Requests</a>
-    <a href="inventory.php" class="active">📦 Inventory</a>
+    <a href="manageInventory.php" class="active">📦 Inventory</a>
     <a href="reports.php">📊 Reports</a>
   </div>
 

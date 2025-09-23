@@ -45,7 +45,6 @@ $requests = $conn->query("
     <table class="styled-table">
       <thead>
         <tr>
-          <th>ID</th>
           <th>User</th>
           <th>Medicines</th>
           <th>Status</th>
@@ -55,7 +54,6 @@ $requests = $conn->query("
       <tbody>
         <?php while ($r = $requests->fetch_assoc()): ?>
           <tr>
-            <td><?= $r['id'] ?></td>
             <td><?= htmlspecialchars($r['full_name']) ?></td>
             <td><?= htmlspecialchars($r['medicines']) ?></td>
             <td><?= htmlspecialchars($r['status']) ?></td>

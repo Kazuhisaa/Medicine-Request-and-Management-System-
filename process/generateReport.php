@@ -23,7 +23,6 @@ $pdf->Cell(0, 10, 'Requests Report', 0, 1, 'C');
 $pdf->Ln(5);
 
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(15, 10, 'ID', 1);
 $pdf->Cell(50, 10, 'User', 1);
 $pdf->Cell(60, 10, 'Medicines', 1);
 $pdf->Cell(25, 10, 'Status', 1);
