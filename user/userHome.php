@@ -1,80 +1,81 @@
+<?php
+session_start();
+include "../config/db.php";
+
+// Redirect to login if user is not logged in
+if (!isset($_SESSION['user_id'])) {
+  header("Location: ../login.php");
+  exit;
+}
+
+// Get user full name from session
+$full_name = $_SESSION['resident_name'] ?? 'User';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title>Botika ng Barangay 35</title>
+  <title>User Home</title>
   <link rel="stylesheet" href="/public/css/userDashboard.css">
+  <style>
+    .welcome-card {
+      background-color: #f1f1f1;
+      padding: 30px;
+      margin: 50px auto;
+      border-radius: 10px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-card h2 {
+      margin-bottom: 20px;
+    }
+
+    .welcome-card button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .welcome-card button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Navbar -->
+
   <div class="navbar">
-    <div class="brand">Botika ng Barangay 35 </div>
-    <button>Logout</button>
+    <div class="brand">Botika ng Barangay 35</div>
+    <button onclick="window.location.href='../login.php'">🚪 Logout</button>
   </div>
 
   <div class="d-flex-full">
-    <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
-      <a href="userHome.php" class="active">🏠 <span>Home</span></a>
-      <a href="userDashboard.php">📊 <span>Dashboard</span></a>
-      <a href="userProfile.php">👤 <span>Profile</span></a>
-      <a href="userRequests.php">💊 <span>Request Medicine</span></a>
+      <a href="userHome.php" class="active">🏠 Home</a>
+      <a href="userDashboard.php">📊 Dashboard</a>
+      <a href="userProfile.php">👤 Profile</a>
+      <a href="userRequests.php">💊 Request Medicine</a>
     </div>
 
-    <!-- Toggle button -->
-    <button id="sidebarToggle">☰</button>
-
-    <!-- Content -->
     <div class="content">
-      <h1>Dashboard</h1>
-      <div class="card">
-        <h3>Quick Stats</h3>
-        <p>Pending Requests: 5</p>
-        <p>Approved Requests: 12</p>
-        <p>Completed Requests: 20</p>
-      </div>
-
-      <div class="card">
-        <h3>Recent Requests</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Medicine</th>
-              <th>User</th>
-              <th>Date</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Paracetamol</td>
-              <td>juan@example.com</td>
-              <td>2025-09-20</td>
-              <td>Pending</td>
-            </tr>
-            <tr>
-              <td>Amoxicillin</td>
-              <td>maria@example.com</td>
-              <td>2025-09-19</td>
-              <td>Approved</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="welcome-card">
+        <h1>Welcome, <?= htmlspecialchars($full_name) ?>!</h1>
+        <p>Start requesting your medicines below.</p>
+        <button onclick="window.location.href='userRequests.php'">Request Medicine 💊</button>
       </div>
     </div>
   </div>
 
   <script>
     const sidebar = document.getElementById('sidebar');
-    const toggleBtn = document.getElementById('sidebarToggle');
     const links = sidebar.querySelectorAll('a');
-
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-    });
-
     links.forEach(link => {
       link.addEventListener('click', function() {
         links.forEach(l => l.classList.remove('active'));
@@ -82,6 +83,7 @@
       });
     });
   </script>
+
 </body>
 
 </html>

@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
   <!-- Navbar -->
   <div class="navbar">
     <div class="brand">Botika ng Barangay 35 </div>
-    <button>Logout</button>
+    <button onclick="window.location.href='../login.php'">🚪 Logout</button>
   </div>
 
   <div class="d-flex-full">

@@ -76,7 +76,7 @@ $requests = $conn->query("
 
   <div class="navbar">
     <div class="brand">Manage Requests</div>
-    <button class="logout-btn">Logout</button>
+    <button onclick="window.location.href='../login.php'">🚪 Logout</button>
   </div>
 
   <div class="content">

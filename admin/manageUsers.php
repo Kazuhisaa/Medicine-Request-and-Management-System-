@@ -30,7 +30,7 @@ $users = $conn->query("SELECT * FROM users ORDER BY created_at DESC");
   <!-- Navbar -->
   <div class="navbar">
     <div class="brand">Manage Users</div>
-    <button class="logout-btn">Logout</button>
+    <button onclick="window.location.href='../login.php'">🚪 Logout</button>
   </div>
 
   <!-- Content -->

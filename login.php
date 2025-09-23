@@ -74,7 +74,6 @@
             password: password
           },
           success: function(response) {
-            // response galing sa PHP
             if (response === "success") {
               Swal.fire({
                 icon: "success",
@@ -82,6 +81,13 @@
                 text: "Welcome back!",
                 confirmButtonColor: "#4CAF50"
               }).then(() => window.location.href = "user/userhome.php");
+            } else if (response === "admin") {
+              Swal.fire({
+                icon: "success",
+                title: "Admin Login Successful!",
+                text: "Welcome back, Admin!",
+                confirmButtonColor: "#4CAF50"
+              }).then(() => window.location.href = "admin/adminDashboard.php");
             } else {
               Swal.fire({
                 icon: "error",
@@ -101,6 +107,7 @@
       });
     });
   </script>
+
 
 </body>
 

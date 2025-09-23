@@ -30,7 +30,7 @@ $inventory = $conn->query("SELECT * FROM inventory ORDER BY date_added DESC");
   <!-- Navbar -->
   <div class="navbar">
     <div class="brand">Inventory</div>
-    <button class="logout-btn">Logout</button>
+    <button onclick="window.location.href='../login.php'">🚪 Logout</button>
   </div>
 
   <!-- Content -->

@@ -1,65 +1,88 @@
+<?php
+session_start();
+include '../config/db.php';
+
+$user_id = $_SESSION['user_id'] ?? 0;
+
+// Quick stats from requests table
+$stats = $conn->query("
+    SELECT
+        IFNULL(COUNT(CASE WHEN status='Pending' THEN 1 END), 0) AS Pending,
+        IFNULL(COUNT(CASE WHEN status='Accepted' THEN 1 END), 0) AS Accepted,
+        IFNULL(COUNT(CASE WHEN status='Rejected' THEN 1 END), 0) AS Rejected
+    FROM requests
+    WHERE user_id = $user_id
+")->fetch_assoc();
+
+// Recent requests with medicines
+$recent = $conn->query("
+    SELECT 
+        r.id,
+        GROUP_CONCAT(ri.medicine_name SEPARATOR ', ') AS medicines,
+        r.date_requested,
+        r.status
+    FROM requests r
+    JOIN request_items ri ON ri.request_id = r.id
+    WHERE r.user_id = $user_id
+    GROUP BY r.id
+    ORDER BY r.date_requested DESC
+    LIMIT 5
+");
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title>Botika ng Barangay 35</title>
+  <title>User Dashboard</title>
   <link rel="stylesheet" href="/public/css/userDashboard.css">
 </head>
 
 <body>
-  <!-- Navbar -->
+
   <div class="navbar">
-    <div class="brand">Botika ng Barangay 35 </div>
-    <button>Logout</button>
+    <div class="brand">Botika ng Barangay 35</div>
+    <button onclick="window.location.href='../login.php'">🚪 Logout</button>
   </div>
 
   <div class="d-flex-full">
-    <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
-      <a href="userHome.php" class="active">🏠 <span>Home</span></a>
-      <a href="userDashboard.php">📊<span>Dashboard</span></a>
-      <a href="userProfile.php">👤 <span>Profile</span></a>
-      <a href="userRequests.php"> 💊<span>Request Medicine</span></a>
+      <a href="userHome.php" class="active">🏠 Home</a>
+      <a href="userDashboard.php">📊 Dashboard</a>
+      <a href="userProfile.php">👤 Profile</a>
+      <a href="userRequests.php">💊 Request Medicine</a>
     </div>
 
-    <!-- Toggle button -->
-    <button id="sidebarToggle">☰</button>
-
-    <!-- Content -->
     <div class="content">
-      <h1>Dashboard</h1>
       <div class="card">
         <h3>Quick Stats</h3>
-        <p>Pending Requests: 5</p>
-        <p>Approved Requests: 12</p>
-        <p>Completed Requests: 20</p>
+        <p>Pending Requests: <?= $stats['Pending'] ?? 0 ?></p>
+        <p>Approved Requests: <?= $stats['Accepted'] ?? 0 ?></p>
+        <p>Rejected Requests: <?= $stats['Rejected'] ?? 0 ?></p>
       </div>
 
       <div class="card">
         <h3>Recent Requests</h3>
-        <table>
+        <table class="styled-table">
           <thead>
             <tr>
-              <th>Medicine</th>
-              <th>User</th>
-              <th>Date</th>
+              <th>Medicines</th>
+              <th>Date Requested</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Paracetamol</td>
-              <td>juan@example.com</td>
-              <td>2025-09-20</td>
-              <td>Pending</td>
-            </tr>
-            <tr>
-              <td>Amoxicillin</td>
-              <td>maria@example.com</td>
-              <td>2025-09-19</td>
-              <td>Approved</td>
-            </tr>
+            <?php while ($row = $recent->fetch_assoc()): ?>
+              <tr>
+                <td><?= htmlspecialchars($row['medicines']) ?></td>
+                <td><?= htmlspecialchars($row['date_requested']) ?></td>
+                <td><?= htmlspecialchars($row['status']) ?></td>
+              </tr>
+            <?php endwhile; ?>
           </tbody>
         </table>
       </div>
@@ -68,12 +91,7 @@
 
   <script>
     const sidebar = document.getElementById('sidebar');
-    const toggleBtn = document.getElementById('sidebarToggle');
     const links = sidebar.querySelectorAll('a');
-
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-    });
 
     links.forEach(link => {
       link.addEventListener('click', function() {

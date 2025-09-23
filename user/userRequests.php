@@ -30,7 +30,7 @@ $medicines = $conn->query("SELECT * FROM medicines ORDER BY created_at DESC");
   <!-- Navbar -->
   <div class="navbar">
     <div class="brand">Request Medicines</div>
-    <button onclick="window.location.href='logout.php'">🚪 Logout</button>
+    <button onclick="window.location.href='../login.php'">🚪 Logout</button>
   </div>
 
   <!-- Content -->
