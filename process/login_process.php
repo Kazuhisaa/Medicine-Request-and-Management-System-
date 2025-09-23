@@ -14,15 +14,23 @@ if (isset($_POST['identifier']) && isset($_POST['password'])) {
   if ($result->num_rows === 1) {
     $user = $result->fetch_assoc();
     if (password_verify($password, $user['password'])) {
+
+      // fetch full name
+      $stmt2 = $conn->prepare("SELECT Fname, Mname, Lname FROM users WHERE id = ?");
+      $stmt2->bind_param("i", $user['id']);
+      $stmt2->execute();
+      $res = $stmt2->get_result();
+      $nameData = $res->fetch_assoc();
+      $fullName = $nameData['Fname'] . ' ' . $nameData['Mname'] . ' ' . $nameData['Lname'];
+
+      // set session
       $_SESSION['user_id'] = $user['id'];
       $_SESSION['username'] = $user['username'];
+      $_SESSION['resident_name'] = $fullName;
+
       echo "success";
     } else {
       echo "Invalid Username or Password.";
     }
-  } else {
-    echo "User not found.";
   }
-} else {
-  echo "Please fill in all fields.";
 }

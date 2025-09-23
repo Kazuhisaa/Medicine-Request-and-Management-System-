@@ -81,7 +81,7 @@
                 title: "Login Successful!",
                 text: "Welcome back!",
                 confirmButtonColor: "#4CAF50"
-              }).then(() => window.location.href = "user/dashboard.php");
+              }).then(() => window.location.href = "user/userhome.php");
             } else {
               Swal.fire({
                 icon: "error",

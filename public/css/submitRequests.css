@@ -1,0 +1,163 @@
+.checkout-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.checkout-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #2e86de;
+}
+
+.cart-items {
+  margin-bottom: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.cart-items li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn-submit {
+  display: block;
+  margin-top: 20px;
+  padding: 12px;
+  background: #2e86de;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s ease;
+}
+
+.btn-submit:hover {
+  background: #1b4f72;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+.checkout-wrapper {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.checkout-wrapper h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+.card-section {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.card-section h2 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: #2980b9;
+  border-left: 5px solid #2980b9;
+  padding-left: 10px;
+}
+
+.empty-cart {
+  color: #888;
+  font-style: italic;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-list li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  background: #fdfdfd;
+}
+
+.form-group input[readonly] {
+  background: #f2f2f2;
+  color: #555;
+}
+
+.required {
+  color: red;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: #27ae60;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-submit:hover {
+  background: #219150;
+}
+
+.submit-box {
+  text-align: center;
+}

@@ -54,9 +54,8 @@
 
         <form id="loginForm" action="process/newPassword_process.php" method="POST">
           <div class="input-wrapper">
-            <input type="hidden" name="token" value="<?php echo htmlspecialchars($_GET['token']); ?>">
-
-
+            <?php $token = isset($_GET['token']) ? htmlspecialchars($_GET['token']) : ''; ?>
+            <input type="hidden" name="token" value="<?= $token ?>">
             <input id="password" class="search-bar" type="password" name="password" placeholder="New Password" required>
             <div id="password_status" class="status-message"></div>
 
