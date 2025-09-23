@@ -31,7 +31,6 @@ $pdf->Ln();
 
 $pdf->SetFont('Arial', '', 12);
 while ($r = $requests->fetch_assoc()) {
-  $pdf->Cell(15, 10, $r['id'], 1);
   $pdf->Cell(50, 10, $r['full_name'], 1);
   $pdf->Cell(60, 10, substr($r['medicines'], 0, 30) . '...', 1);
   $pdf->Cell(25, 10, $r['status'], 1);
